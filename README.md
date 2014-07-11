@@ -1,4 +1,4 @@
-codeigniter-mashup-cooperative
-==============================
+emailer
+=======
 
-Database configuration (for now) -> application / modules / correcaminos / libraries / correcaminos.php
+E-mail/newsletter IDE looking for a better name.
