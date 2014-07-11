@@ -36,7 +36,8 @@
 					<textarea id="code" name="code"><?=$template?></textarea>
 				</div>
 				<div id="ide_panel_css" class="tab-panel">
-					Aquí el CSS
+					Aquí el CSS<br>
+					<textarea id="css_val" rows="10" cols="40"><?=$this->load->view('css/custom_view', '', TRUE)?></textarea>
 				</div>
 				<div id="ide_panel_variables" class="tab-panel">
 					Aquí las variables<br>
@@ -47,6 +48,10 @@
 	"derp"	: "A veeer"
 }
 					</textarea>
+				</div>
+				<div id="ide_panel_css_reset" class="tab-panel">
+					Aquí el CSS<br>
+					<textarea id="css_reset_val" rows="10" cols="40"><?=$this->load->view('css/reset_view', '', TRUE)?></textarea>
 				</div>
 			</div>
 
@@ -83,27 +88,41 @@
 				clearTimeout(delay);
 				delay = setTimeout(updatePreview, 300);
 			});
-			variable_list.on("input propertychange", function() {
+			$('#css_val, #variable_list').on("input propertychange", function() {
 				clearTimeout(delay);
 				delay = setTimeout(updatePreview, 300);
 			});
 
 
-			function template(html,data){
-				return html.replace(/%(\w*)%/g,function(m,key){return data.hasOwnProperty(key)?data[key]:"<strong style=\"color: #ff0000\">%" + key + "%</strong>";});
+			function template(html, data){
+				return html.replace(/%(\w*)%/g, function (m,key) {
+					if (data.hasOwnProperty(key)) {
+						console.log('yup');
+						return data[key];
+					} else {
+						console.log('nope ' + key);
+						return "<strong style=\"color: #ff0000\">%" + key + "%</strong>";
+					}
+				});
 			}
 
 			function updatePreview() {
 				var previewFrame		= document.getElementById('preview');
 				var preview 			= previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+				var css_val				= $('#css_val').val();
+				var css_reset_val		= $('#css_reset_val').val();
+				var static_vars 		= {
+					'css'		: css_val,
+					'css_reset'	: css_reset_val
+				};
 
 				try {
 					var variable_list_val	= $.parseJSON(variable_list.val());
-					var html	= template(editor.getValue(), variable_list_val);
 				} catch(err) {
 					console.log('error en la lista de variables');
-					var html	= editor.getValue();
 				}
+
+				var html	= template(editor.getValue(), $.extend(static_vars, variable_list_val));
 
 				preview.open();
 				preview.write(html);
