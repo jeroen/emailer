@@ -18,8 +18,16 @@ tab.on('click', function () {
 
 var delay;
 var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
-	mode: 'text/html',
-	theme	: 'monokai'
+	lineNumbers			: true,
+	styleActiveLine		: true,
+	matchBrackets		: true,
+	indentWithTabs		: true,
+	foldGutter			: true,
+    gutters				: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+    widget				: 'deeerp',
+	indentUnit			: 4,
+	mode				: 'text/html',
+	theme				: 'monokai'
 });
 editor.on("change", function() {
 	clearTimeout(delay);

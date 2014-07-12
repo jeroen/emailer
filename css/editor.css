@@ -31,13 +31,28 @@ h1 {
 	position: absolute;
 	bottom: 0;
 	top: 80px;
-	padding: 5px;
 	height: auto;
 	font-family: 'Ubuntu Mono', "Lucida Console", Monaco, monospace;
 	line-height: 1.2em;
 }
 .cm-s-monokai.CodeMirror {
 	background: #222222;
+}
+.cm-s-monokai .CodeMirror-linenumber {
+	color: #555555;
+}
+.cm-s-monokai .CodeMirror-guttermarker-subtle {
+	color: #555555;
+}
+.CodeMirror-foldmarker {
+	background: #2D7B8F;
+	color: #C7E9F1;
+	padding: 0px 5px;
+	margin: 0 2px;
+	display: inline-block;
+	line-height: 1em;
+	border-radius: 2px;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.4);
 }
 #preview_wrapper {
 	width: 50%;

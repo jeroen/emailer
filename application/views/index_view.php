@@ -8,12 +8,21 @@
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/codemirror/codemirror.css">
 		<link rel="stylesheet" href="css/codemirror/theme/monokai.css">
+		<link rel="stylesheet" href="js/codemirror/addon/fold/foldgutter.css" />
 		<link rel="stylesheet" href="css/editor.css">
 		<script src="js/codemirror/codemirror.js"></script>
 		<script src="js/codemirror/mode/xml/xml.js"></script>
 		<script src="js/codemirror/mode/javascript/javascript.js"></script>
 		<script src="js/codemirror/mode/css/css.js"></script>
 		<script src="js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="js/codemirror/addon/active-line.js"></script>
+
+		<script src="js/codemirror/addon/fold/foldcode.js"></script>
+		<script src="js/codemirror/addon/fold/foldgutter.js"></script>
+		<script src="js/codemirror/addon/fold/brace-fold.js"></script>
+		<script src="js/codemirror/addon/fold/xml-fold.js"></script>
+		<script src="js/codemirror/addon/fold/markdown-fold.js"></script>
+		<script src="js/codemirror/addon/fold/comment-fold.js"></script>
 	</head>
 	<body>
 
